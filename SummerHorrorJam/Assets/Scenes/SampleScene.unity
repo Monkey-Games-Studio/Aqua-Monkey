@@ -266,9 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Objetivo: {fileID: 460384526}
-  Vel: 3
+  Vel: 20
   IA: {fileID: 212117382}
-  Distance: 20
+  Distance: 30
 --- !u!1 &231810415
 GameObject:
   m_ObjectHideFlags: 0

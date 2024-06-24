@@ -13,8 +13,14 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         IA.speed = Vel;
-        
-        IA.SetDestination(Objetivo.position);
+        if (Vector3.Distance(transform.position, Objetivo.position) < Distance)
+        {
+            IA.SetDestination(Objetivo.position);
+        }
+        else
+        {
+            IA.SetDestination(transform.position);
+        }
 
     }
 }
