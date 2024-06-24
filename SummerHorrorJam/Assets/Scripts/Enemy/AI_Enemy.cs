@@ -7,12 +7,14 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public Transform Objetivo;
     public float Vel;
-
     public NavMeshAgent IA;
+    public float Distance;
 
     void Update()
     {
         IA.speed = Vel;
+        
         IA.SetDestination(Objetivo.position);
+
     }
 }
