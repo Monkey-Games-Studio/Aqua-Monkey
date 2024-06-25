@@ -5,40 +5,42 @@ using UnityEngine.AI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public Transform[] objetivos; // Array de todos los objetivos que deseas que el agente persiga
+    //Rodrigo el uso de public es para poder modificar las variables desde el editor de Unity
+    public Transform[] objetivos; // Array de todos los objetivos a los que puede ir el enemigo
     public Transform player;
     public float velocidad;
     public float distanciaObjetivo;
-    public NavMeshAgent agente;
+    public NavMeshAgent malomalote;
 
     private Transform objetivoActual;
+    private Transform objetivoAnterior;
     private bool objetivoAlcanzado = true;
 
     void Start()
     {
-        // Inicialmente, elige un objetivo aleatorio
+        //Empieza definiendo el primer objetivo al que ir
         CambiarObjetivo();
     }
 
     void Update()
     {
-        agente.speed = velocidad;
+        malomalote.speed = velocidad;
 
-        // Detectar al jugador
+        // Funcion para detectar si el puto muñeco del Didac este cerca para ir a mover el perro detrás de él
         if (Vector3.Distance(transform.position, player.position) < distanciaObjetivo)
         {
-            agente.SetDestination(player.position);
+            malomalote.SetDestination(player.position);
         }
 
-        // Cambiar de objetivo si el objetivo actual ha sido alcanzado
+        // Cambia de objetivo si el objetivo actual ha sido alcanzado
         if (objetivoAlcanzado)
         {
-            CambiarObjetivo();
-            objetivoAlcanzado = false;
+            CambiarObjetivo();//Llama a la funcion que cambia de objetivo
+            objetivoAlcanzado = false;//Lo pone en false para que no se quede en bucle
         }
         else
         {
-            // Verificar si el agente ha alcanzado el objetivo actual
+            // Verificar si el enemigo ha alcanzado su objetivo
             if (objetivoActual != null && Vector3.Distance(transform.position, objetivoActual.position) < distanciaObjetivo)
             {
                 objetivoAlcanzado = true;
@@ -48,8 +50,15 @@ public class NewBehaviourScript : MonoBehaviour
 
     void CambiarObjetivo()
     {
-        // Seleccionar un objetivo aleatorio del array de objetivos
-        objetivoActual = objetivos[Random.Range(0, objetivos.Length)];
-        agente.SetDestination(objetivoActual.position);
+        // Seleccionar un objetivo aleatorio que no sea el mismo que el anteriormente alcanzado
+        do
+        {
+            objetivoActual = objetivos[Random.Range(0, objetivos.Length)];
+        } while (objetivoActual == objetivoAnterior);
+
+        // Actualizar el objetivo anterior
+        objetivoAnterior = objetivoActual;
+
+        malomalote.SetDestination(objetivoActual.position);
     }
 }
