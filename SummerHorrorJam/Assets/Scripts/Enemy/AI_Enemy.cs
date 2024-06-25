@@ -5,60 +5,51 @@ using UnityEngine.AI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public Transform Objetivo_1;
-    public Transform Objetivo_2;
-    public Transform Objetivo_3;
-    Transform Objetivo = null;
+    public Transform[] objetivos; // Array de todos los objetivos que deseas que el agente persiga
+    public Transform player;
+    public float velocidad;
+    public float distanciaObjetivo;
+    public NavMeshAgent agente;
 
-    bool Objetivoalacanzado = true;
+    private Transform objetivoActual;
+    private bool objetivoAlcanzado = true;
 
-    public Transform Player;
-    public float Vel;
-    public NavMeshAgent IA;
-    public float Distance;
-    int random;
+    void Start()
+    {
+        // Inicialmente, elige un objetivo aleatorio
+        CambiarObjetivo();
+    }
 
     void Update()
     {
-        IA.speed = Vel;
+        agente.speed = velocidad;
 
-        if (Vector3.Distance(transform.position, Player.position) < Distance)
+        // Detectar al jugador
+        if (Vector3.Distance(transform.position, player.position) < distanciaObjetivo)
         {
-            IA.SetDestination(Player.position);
+            agente.SetDestination(player.position);
         }
 
-        if (Objetivoalacanzado)
+        // Cambiar de objetivo si el objetivo actual ha sido alcanzado
+        if (objetivoAlcanzado)
         {
-            Randomize();
-            Objetivoalacanzado = false;
+            CambiarObjetivo();
+            objetivoAlcanzado = false;
         }
-
-        if (Objetivo != null && Vector3.Distance(transform.position, Objetivo.position) <= 1)
+        else
         {
-            Objetivoalacanzado = true;
+            // Verificar si el agente ha alcanzado el objetivo actual
+            if (objetivoActual != null && Vector3.Distance(transform.position, objetivoActual.position) < distanciaObjetivo)
+            {
+                objetivoAlcanzado = true;
+            }
         }
     }
 
-    void Randomize()
+    void CambiarObjetivo()
     {
-        random = Random.Range(1, 4);
-
-        switch (random)
-        {
-            case 1:
-                Objetivo = Objetivo_1;
-                break;
-            case 2:
-                Objetivo = Objetivo_2;
-                break;
-            case 3:
-                Objetivo = Objetivo_3;
-                break;
-        }
-
-        if (Objetivo != null)
-        {
-            IA.destination = Objetivo.position;
-        }
+        // Seleccionar un objetivo aleatorio del array de objetivos
+        objetivoActual = objetivos[Random.Range(0, objetivos.Length)];
+        agente.SetDestination(objetivoActual.position);
     }
 }

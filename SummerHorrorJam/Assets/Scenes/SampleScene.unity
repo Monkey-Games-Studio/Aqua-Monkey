@@ -818,7 +818,7 @@ MonoBehaviour:
   Player: {fileID: 746393145}
   Vel: 10
   IA: {fileID: 1444268747}
-  Distance: 15
+  Distance: 20
 --- !u!195 &1444268747
 NavMeshAgent:
   m_ObjectHideFlags: 0
