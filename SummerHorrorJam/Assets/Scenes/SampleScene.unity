@@ -812,13 +812,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca429b8a48beb448c81707f129afae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Objetivo_1: {fileID: 1372925792}
-  Objetivo_2: {fileID: 1746009487}
-  Objetivo_3: {fileID: 1231846492}
-  Player: {fileID: 746393145}
-  Vel: 10
-  IA: {fileID: 1444268747}
-  Distance: 20
+  objetivos:
+  - {fileID: 1372925792}
+  - {fileID: 1746009487}
+  - {fileID: 1231846492}
+  player: {fileID: 746393145}
+  velocidad: 10
+  distanciaObjetivo: 10
+  malomalote: {fileID: 1444268747}
 --- !u!195 &1444268747
 NavMeshAgent:
   m_ObjectHideFlags: 0

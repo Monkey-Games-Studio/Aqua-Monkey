@@ -54,7 +54,7 @@ public class NewBehaviourScript : MonoBehaviour
         do
         {
             objetivoActual = objetivos[Random.Range(0, objetivos.Length)];
-        } while (objetivoActual == objetivoAnterior);
+        } while (objetivoActual == objetivoAnterior); // Do while el eterno olvidado
 
         // Actualizar el objetivo anterior
         objetivoAnterior = objetivoActual;
