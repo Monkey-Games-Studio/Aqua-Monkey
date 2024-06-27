@@ -21,6 +21,7 @@ public class Llave_puerta : MonoBehaviour
     private void Obtener()
     {
         llaveobtenida = true;
-        Destroy(llave.gameObject);
+        llave.SetParent(GameObject.Find("Player").transform);
+
     }
 }
