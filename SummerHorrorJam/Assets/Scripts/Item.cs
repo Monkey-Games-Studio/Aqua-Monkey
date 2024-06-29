@@ -22,11 +22,14 @@ public class Item : MonoBehaviour
     public Vector3 spawnPosition;
     public Vector3 spawnRotation;
 
+    public bool isSpecial;
+
 
     public enum ItemType
     {
         Vodka,
-        Cigarrete
+        Cigarrete,
+        Target
     }
 
     public ItemType thisItemType;
@@ -82,7 +85,7 @@ public class Item : MonoBehaviour
     private void DestroyItem()
     {
         print("UsedItem!");
-        if(uses<1){
+        if(uses<1 && !isSpecial){
             Destroy(gameObject); // Destroy the game object
         }
         else{
