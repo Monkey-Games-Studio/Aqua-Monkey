@@ -58,7 +58,10 @@ public class Item : MonoBehaviour
     private void UseItem()
     {
         animator.SetTrigger("USE");
-        uses-=1;
+        if (!isSpecial)
+        {
+            uses -= 1;
+        }
         if (allowDestroy)
         {
             animDelay=GetDelay();
