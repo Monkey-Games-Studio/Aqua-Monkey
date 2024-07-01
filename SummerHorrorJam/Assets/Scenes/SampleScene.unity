@@ -472,9 +472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
+  oxygenStation: {fileID: 0}
   currentoxigeno: 100
   oxigenoMax: 100
   oxigenoMin: 0
+  NoConsumo: 0
   ConsumoOxigenoStatic: 0.1
   ConsumoOxigenoRun: 5
   ConsumoOxigenoWalk: 2
@@ -3092,10 +3094,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b82370cb12e2874f945238204e88f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  oxygenAmount: 1
+  oxygenAmount: 50
+  oxygenRecoveryRate: 1
+  oxygenRecovered: 0
   range: 2
-  isRecovering: 0
+  isRecoveringOxygen: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

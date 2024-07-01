@@ -31,9 +31,8 @@ public class OxygenStation : MonoBehaviour
         if (Vector3.Distance(transform.position, playerMovement.transform.position) < range)
         {
             //press F to add oxygen
-            if (Input.GetKey(KeyCode.F) && oxygenSystem.currentoxigeno <= oxygenSystem.oxigenoMax && oxygenRecovered <= oxygenAmount)
+            if (Input.GetKey(KeyCode.F) && oxygenSystem.currentoxigeno < oxygenSystem.oxigenoMax && oxygenRecovered <= oxygenAmount)
             {
-                oxygenSystem.CurrentConsume = 0.0f;
                 // Add oxygen to player
                 oxygenSystem.currentoxigeno += oxygenRecoveryRate * Time.deltaTime;
                 oxygenSystem.isRecoveringOxigen = true;
