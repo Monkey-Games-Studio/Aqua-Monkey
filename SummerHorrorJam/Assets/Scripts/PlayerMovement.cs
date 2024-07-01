@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     public float staminaRecoveryRate = 5.0f;
     public float cooldownDuration = 3.0f;
     public bool isRecoveringStamina = false;
+    public Vector3 PlayerPosition = Vector3.zero;
 
     void Start()
     {
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        PlayerPosition = transform.position;
         // Ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 

@@ -28,7 +28,8 @@ public class Item : MonoBehaviour
     {
         Vodka,
         Cigarrete,
-        Target
+        Target,
+        OxygenStation
     }
 
     public ItemType thisItemType;
