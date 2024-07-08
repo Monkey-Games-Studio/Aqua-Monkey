@@ -42,7 +42,7 @@ public class PlayerLook : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         defaultYPos = cameraTransform.localPosition.y;
         initialCameraPosition = cameraTransform.localPosition;
 
